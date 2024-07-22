@@ -1,0 +1,22 @@
+<h1 class="text-center" style="font-size: 90px; margin-top: 150px">Welcome to Articles</h1>
+
+<p class="text-center mt-2" style="font-size: 70px; color: red;">Our blog has <%= Article.public_count %> articles and counting!</p>
+
+<div class="text-center" style = "font-size: 50px;"> 
+    <%= link_to "New Article", new_article_path%>
+</div>
+
+<ul class="d-flex justify-content-center mt-5 mr-5" style="margin-left: 70px; font-size: 30px;">
+    <% @articles.each do |article| %>
+        <% unless article.archived? %>
+            <ul>
+                <div class="card" style="width: 18rem;">
+                    <div class="card-body">
+                        <h5 class="card-title"><%= link_to article.title, article %></h5>                            
+                    </div>
+                </div>
+            </ul>
+        <% end %>
+    <% end %>
+</ul>
+

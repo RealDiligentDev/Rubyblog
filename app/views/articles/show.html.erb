@@ -1,0 +1,29 @@
+<h1 class="text-center mt-5" style="font-size: 90px; color: red;"><%= @article.title %></h1>
+<p class="text-center mt-2" style="font-size: 40px; "><%= @article.body %></p>
+
+<div style="width: 600px; margin: auto">
+    <div class="d-flex flex-row mb-5">
+        <div class="card mr-4" style="width: 18rem;">
+            <div class="card-body text-center" style="font-size: 40px; color: blue">
+                <%= link_to "Edit", edit_article_path(@article) %></li>
+            </div>
+        </div>
+
+    <div class="card" style="width: 18rem;">
+        <div class="card-body text-center" style="font-size: 40px; color: red">
+            <%= link_to "Destroy", article_path(@article), data: {
+                turbo_method: :delete,
+                turbo_confirm: "Are you sure?"
+            }%>
+        </div>
+    </div>
+</div>
+   
+
+<div style="width: 600px; margin: auto">
+    <h2>Comments</h2>
+    <%= render @article.comments %>
+
+<h2>Add a comment:</h2>
+<%= render 'comments/form' %>
+</div>

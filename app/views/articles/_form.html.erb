@@ -1,0 +1,28 @@
+<%= form_with model: article do |form| %>
+<div class="d-flex flex-column">
+    <div class="align-self-center mb-3">
+        <div style="font-size: 30px; color: blue;" ><%= form.label :title %><br></div>
+        <%= form.text_field :title %>
+        <% article.errors.full_messages_for(:title).each do |message| %>
+            <div><%= message %></div>
+        <% end %>
+    </div>
+
+    <div class="align-self-center mb-3">
+        <div style="font-size: 30px; color: blue;" ><%= form.label :body %><br></div>
+        <%= form.text_area :body %><br>
+        <% article.errors.full_messages_for(:body).each do |message| %>
+            <div><%= message %></div>
+        <% end %>
+    </div>
+
+    <div class="align-self-center mb-3">
+        <div style="font-size: 30px; color: blue;" ><%= form.label :status %><br></div>
+        <%= form.select :status, Visible::VALID_STATUSES, selected: article.status || 'public' %>
+    </div>
+
+    <div class="align-self-center mb-3">
+        <%= form.submit %>      
+    </div>
+</div>
+<% end %>
